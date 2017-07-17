@@ -26,7 +26,7 @@ this bot was made in
 ## Installation
 Clone the repository
 ```
-git clone https://github.com/Rutmeister/Orange-Fox-DiscordBot.git
+git clone https://github.com/Rutmeister/OrangeFox.git
 ```
 Install Node dependencies
 ```
