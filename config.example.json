@@ -1,0 +1,32 @@
+{
+  "token": "<discord api token>",
+  "client_id": "<bot client id>",
+  "youtube_api_key": "<youtube api key>",
+  "prefix": ".",
+  "game": "<playing status on discord>",
+
+
+  "admins": {
+    "<userid on discord>": "<optional name>"
+  },
+
+  "welcome": {
+      "enabled": true,
+      "message": "Welcome {user} to {server} :fox:",
+      "add_role": {
+        "enabled": false,
+        "role": "default"
+      }
+  },
+
+  "bot_channel": {
+    "enabled": false,
+    "channel": "bot",
+    "music": {
+      "channel": "music",
+      "maxQueueSize": 20
+    }
+  }
+
+
+}
