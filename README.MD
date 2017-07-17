@@ -17,13 +17,13 @@ this bot was made in
 [Node.JS](https://nodejs.org), using the
 [Discord.js](https://discord.js.org/#/) library.
 
-##Features
+## Features
 - Ability to stream music from Youtube
 - Moderation commands (kick, ban etc)
 - Search youtube for videos
 - And more
 
-##Installation
+## Installation
 Clone the repository
 ```
 git clone https://github.com/Rutmeister/Orange-Fox-DiscordBot.git
@@ -41,7 +41,7 @@ Run the bot!
 node bot
 ```
 
-##Configuration
+## Configuration
 You can find all settings in the config.json file, without filling in all the details some features might not work as expected. Below you can find a quick summary of all settings in the **config.json** file
 
 - **token**: Your discord api token
