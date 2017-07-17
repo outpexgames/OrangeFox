@@ -1,5 +1,6 @@
 const YoutubeDL = require('youtube-dl');
 const ytdl = require('ytdl-core');
+var config = require('./config.json');
 var volum = 50;
 /**
  * Takes a discord.js client and turns it into a music bot.
@@ -33,6 +34,11 @@ module.exports = function (client, options) {
 		if (typeof msg.channel.guild == 'undefined') {
 	    return;
 	  }
+		if (config.bot_channel.enabled) {
+			if (msg.channel.name !== config.bot_channel.channel && !serverAdmin(msg)) {
+				return; //not in proper channel
+			}
+		}
 
 		const message = msg.content.trim();
 
@@ -70,8 +76,20 @@ module.exports = function (client, options) {
 	 * @param {GuildMember} member - The guild member
 	 * @returns {boolean} -
 	 */
+
 	function isAdmin(member) {
 		return member.hasPermission("ADMINISTRATOR");
+	}
+
+	function serverAdmin(msg) {
+	  if (typeof msg.channel.guild == 'undefined') {
+	    return true; //pm so allow
+	  }
+	  if (!msg.member.hasPermission("ADMINISTRATOR")) {
+	    return false;
+	  } else {
+	    return true;
+	  }
 	}
 
 	/**
