@@ -34,7 +34,7 @@ npm Install
 ```
 Configuration
 ```
-Fill in your api details in the **config.json** file
+Create a config.json and copy the contents from config.example.json and replace the info with your details
 ```
 Run the bot!
 ```
