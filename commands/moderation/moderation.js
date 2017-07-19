@@ -151,7 +151,7 @@ exports.purge = {
       return;
     }
 
-    let msgcount = parseInt(suffix);
+    let msgcount = parseInt(suffix) + 1;
     if (isNaN(msgcount)) {
       return msg.reply('Numbers only :1234:');
     }
