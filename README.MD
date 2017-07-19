@@ -4,8 +4,8 @@
 
 <p align="center">
 <a href="http://nodejs.org"><img src="https://img.shields.io/badge/Node.js-6.9.1-blue.svg" alt="Node JS"></a>
-<a href="http://npmjs.com"><img src="https://img.shields.io/badge/npm-4.0.5-blue.svg" alt="npm"></a>
-<a><img src="https://img.shields.io/badge/Version-1.0.0-blue.svg" alt="Version"></a>
+<a href="http://npmjs.com"><img src="https://img.shields.io/badge/npm-5.3.0-blue.svg" alt="npm"></a>
+<a><img src="https://img.shields.io/badge/Version-1.0.4-blue.svg" alt="Version"></a>
 <a href="https://discord.gg/Rbx9E7V"><img src="https://discordapp.com/api/guilds/293787768218320896/widget.png" alt="Discord server"></a>
 </p>
 
@@ -21,7 +21,8 @@ this bot was made in
 - Ability to stream music from Youtube
 - Moderation commands (kick, ban etc)
 - Search youtube for videos
-- And more
+- Search 4chan
+- And more...
 
 ## Installation
 Clone the repository
