@@ -4,7 +4,8 @@ exports.commands = [
   'bans',
   'uptime',
   'setusername',
-  'invite'
+  'invite',
+  'purge'
 ]
 
 var startTime = Date.now();
@@ -142,8 +143,63 @@ exports.invite = {
   }
 }
 
+exports.purge = {
+  usage: "<number>",
+  description: "remove x amount of messages",
+  process: function(bot, msg, suffix) {
+    if (!serverAdmin(msg)) {
+      return;
+    }
+
+    let msgcount = parseInt(suffix);
+    if (isNaN(msgcount)) {
+      return msg.reply('Numbers only :1234:');
+    }
+    if (msgcount < 2) {
+      return msg.reply('Minimum purge is 2 messages or higher');
+    }
+
+    if (msgcount < 150 && msgcount > 100) {
+      msg.channel.fetchMessages({limit: 100}).then(messages => msg.channel.bulkDelete(messages));
+      todel = msgcount - 100;
+      msg.channel.fetchMessages({limit: todel}).then(messages => msg.channel.bulkDelete(messages));
+      return;
+    }
+    if (msgcount >= 150 && msgcount <= 1000) {
+      var i = 1;
+      var x = Math.round(msgcount/100);
+      var y = msgcount/100;
+
+      while (i <= x) {
+        if (i === x) {
+          m = i - 1;
+          m = m * 100;
+          todelete = msgcount - m;
+          msg.channel.fetchMessages({limit: todelete}).then(messages => msg.channel.bulkDelete(messages));
+        } else {
+          msg.channel.fetchMessages({limit: 100}).then(messages => msg.channel.bulkDelete(messages));
+        }
+        i++;
+      }
+    } else {
+      msg.channel.fetchMessages({limit: msgcount}).then(messages => msg.channel.bulkDelete(messages));
+    }
+  }
+}
+
 function checkServer(msg) {
   if (typeof msg.channel.guild == 'undefined') {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function serverAdmin(msg) {
+  if (typeof msg.channel.guild == 'undefined') {
+    return false; //pm so dont allow
+  }
+  if (!msg.member.hasPermission("ADMINISTRATOR")) {
     return false;
   } else {
     return true;
