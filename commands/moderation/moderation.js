@@ -80,10 +80,10 @@ exports.bans = {
     var bans;
     msg.guild.fetchBans()
      .then(function(bans) {
-       if (Object.keys(bans).length== 0) {
+       if (bans.size == 0) {
          msg.channel.send("No one has been banned yet :white_check_mark:");
        } else {
-         var res = "**Banned Users**";
+         var res = "**Banned Users**\n";
          bans.forEach(function (user) {
           res += '\n :point_right: ' + user.username;
         })
