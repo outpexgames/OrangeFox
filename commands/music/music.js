@@ -6,7 +6,8 @@ exports.commands = [
   'volume',
   'leave',
   'clearqueue',
-  'resume'
+  'resume',
+  'queue'
 ]
 
 exports.play = {
@@ -44,5 +45,10 @@ exports.leave = {
 
 exports.clearqueue = {
   description: "Clear the entire queue",
+  process: function() {}
+}
+
+exports.queue = {
+  description: "Shows the current queue",
   process: function() {}
 }

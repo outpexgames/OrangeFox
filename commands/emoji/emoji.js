@@ -32,10 +32,6 @@ exports.mojify = {
       var alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
       'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-      for (var i = 0, len = alphabet.length; i < len; i++) {
-        text = text.split(alphabet[i]).join(':regional_indicator_' + alphabet[i].toLowerCase() + ':');
-      }
-
       msg.channel.send(text);
     });
   }
