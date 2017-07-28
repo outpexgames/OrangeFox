@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const os = require('os');
 const music = require('./music_bot.js');
+const antispam = require('./anti_spam.js');
 
 var log4js = require('log4js');
 var fs = require('fs');
@@ -28,6 +29,8 @@ music(bot, {
 	clearInvoker: true, // If permissions applicable, allow the bot to delete the messages that invoke it (start with prefix)
   channel: config.bot_channel.music.channel    // Name of voice channel to join. If omitted, will instead join user's voice channel.
 });
+
+antispam(bot);
 
 //welcome message
 if (config.welcome.enabled) {
