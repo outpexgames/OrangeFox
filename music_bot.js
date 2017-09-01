@@ -1,6 +1,10 @@
 const YoutubeDL = require('youtube-dl');
 const ytdl = require('ytdl-core');
+var YouTube = require('youtube-node');
+
 var config = require('./config.json');
+var youTube = new YouTube();
+youTube.setKey(config.youtube_api_key);
 var volum = 50;
 /**
  * Takes a discord.js client and turns it into a music bot.
@@ -150,21 +154,45 @@ module.exports = function (client, options) {
 				searchstring = 'gvsearch1:' + suffix;
 			}
 
-			YoutubeDL.getInfo(searchstring, ['-q', '--no-warnings', '--force-ipv4'], (err, info) => {
-				// Verify the info.
-				if (err || info.format_id === undefined || info.format_id.startsWith('0')) {
-					return response.edit(wrap('Invalid video!'));
+			// YoutubeDL.getInfo(searchstring, ['-q', '--no-warnings', '--force-ipv4'], (err, info) => {
+			// 	// Verify the info.
+			// 	if (err || info.format_id === undefined || info.format_id.startsWith('0')) {
+			// 		return response.edit(wrap('Invalid video!'));
+			// 	}
+			//
+			// 	info.requester = msg.author.id;
+			//
+			// 	// Queue the video.
+				// response.edit(wrap('Queued: ' + info.title)).then(() => {
+				// 	queue.push(info);
+				// 	// Play if only one element in the queue.
+				// 	if (queue.length === 1) executeQueue(msg, queue);
+				// }).catch(console.log);
+			// });
+
+			youTube.search(suffix, 1, function(error, res) {
+			if (error) {
+				msg.channel.send("¯\\_(ツ)_/¯");
+			}
+			else {
+				if (!res || !res.items || res.items.length < 1) {
+					msg.channel.send("No results ¯\\_(ツ)_/¯");
+				} else {
+					var info = new Object();
+					info.requester = msg.author.id;
+ 					info.format_id = res.items[0].id.videoId;
+					info.title = res.items[0].snippet.title;
+					info.webpage_url = "https://www.youtube.com/view?v="+info.format_id;
+					// queue.push(info);
+					response.edit(wrap('Queued: ' + info.title)).then(() => {
+						queue.push(info);
+						// Play if only one element in the queue.
+						if (queue.length === 1) executeQueue(msg, queue);
+					}).catch(console.log);
+					//msg.channel.send("http://www.youtube.com/watch?v=" + info.items[0].id.videoId );
 				}
-
-				info.requester = msg.author.id;
-
-				// Queue the video.
-				response.edit(wrap('Queued: ' + info.title)).then(() => {
-					queue.push(info);
-					// Play if only one element in the queue.
-					if (queue.length === 1) executeQueue(msg, queue);
-				}).catch(console.log);
-			});
+			}
+		});
 		}).catch(console.log);
 	}
 
