@@ -176,7 +176,8 @@ module.exports = function (client, options) {
 			}
 			else {
 				if (!res || !res.items || res.items.length < 1) {
-					msg.channel.send("No results ¯\\_(ツ)_/¯");
+					response.edit(wrap('No results ¯\\_(ツ)_/¯')).then(() => {
+					});
 				} else {
 					var info = new Object();
 					info.requester = msg.author.id;
