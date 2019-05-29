@@ -1,9 +1,9 @@
 {
-  "token": "<discord api token>",
-  "client_id": "<bot client id>",
+  "token": "NTgzNDMwMjM2NjQ2MTQ2MDQ5.XO8PxQ.v0Gk8b4l6OFX1jAicTSUscEaBsg",
+  "client_id": "583430236646146049",
   "youtube_api_key": "<youtube api key>",
-  "prefix": ".",
-  "game": "<playing status on discord>",
+  "prefix": "!",
+  "game": "games",
 
 
   "admins": {
@@ -21,7 +21,7 @@
 
   "bot_channel": {
     "enabled": false,
-    "channel": "bot",
+    "channel": "general",
     "music": {
       "channel": "music",
       "maxQueueSize": 20
